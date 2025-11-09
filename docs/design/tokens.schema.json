@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "[Project Name] Design Tokens",
+  "type": "object",
+  "properties": {
+    "colors": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "neutral": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "success": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "warning": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "background": { "type": "string" },
+        "surface": { "type": "string" }
+      },
+      "required": ["primary", "neutral"]
+    },
+    "spacing": {
+      "type": "object",
+      "description": "xs..4xl mapped to px/rem strings",
+      "additionalProperties": { "type": "string" }
+    },
+    "radius": {
+      "type": "object",
+      "description": "sm..full mapped to px/rem",
+      "additionalProperties": { "type": "string" }
+    },
+    "shadows": {
+      "type": "object",
+      "description": "shadow-sm..shadow-xl, shadow-card",
+      "additionalProperties": { "type": "string" }
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "fontFamilySans": { "type": "string" },
+        "scale": {
+          "type": "object",
+          "properties": {
+            "h1": {
+              "type": "object",
+              "properties": {
+                "size": { "type": "string" },
+                "lineHeight": { "type": "string" },
+                "weight": { "type": "integer" }
+              },
+              "required": ["size", "lineHeight", "weight"]
+            },
+            "h2": { "type": "object" },
+            "h3": { "type": "object" },
+            "h4": { "type": "object" },
+            "body": { "type": "object" },
+            "small": { "type": "object" },
+            "caption": { "type": "object" }
+          },
+          "additionalProperties": { "type": "object" }
+        }
+      },
+      "required": ["fontFamilySans", "scale"]
+    },
+    "breakpoints": {
+      "type": "object",
+      "properties": {
+        "mobile": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "tablet": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "desktop": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "wide": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "maxItems": 1
+        }
+      },
+      "required": ["mobile", "tablet", "desktop", "wide"]
+    }
+  },
+  "required": [
+    "colors",
+    "spacing",
+    "radius",
+    "shadows",
+    "typography",
+    "breakpoints"
+  ],
+  "additionalProperties": false
+}

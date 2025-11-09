@@ -1,0 +1,53 @@
+---
+alwaysApply: true
+---
+
+# [Project Name] · General Implementation Rules for Cursor
+
+## Plan → Review → Execute Mindset
+
+- Always start by drafting a written plan before touching code. Reference `docs/Project_Definition.md` and the relevant phase brief under `docs/architecture/` to confirm scope and priorities.
+- Call out assumptions explicitly. If documentation is unclear, pause and surface the question rather than guessing.
+- After planning, perform a sanity check: does the approach align with the product vision, technical stack, and phase goals? Adjust before implementing.
+- Execute deliberately. Prefer intelligent sequencing, maintainability, and clarity over raw velocity.
+- Post-implementation, review the diff against the original plan. Confirm everything still makes sense; document deviations and update phase decision logs when needed.
+
+## Product Vision & User Focus
+
+- Mission: [Project Description] (`docs/Project_Definition.md`).
+- Primary personas:
+  - [List of primary personas]
+- MVP priorities (Phase 1–3): [List of MVP priorities]
+- Uphold bilingual support across UI copy, notifications, and content ingestion.
+
+## Architecture & Delivery Phasing (`docs/architecture/overview.md`)
+
+- Work phase-by-phase. Consult the relevant phase file (`phase-0` … `phase-4`) to determine current objectives, deliverables, and definition of done. Do not skip ahead without explicit authorization. You can use the AI_Cheatsheet.md to help you understand the project and the current status.
+- Stack commitments:
+  - **Framework**: TanStack Start + Router with streaming SSR and nested layouts.
+  - **Realtime/Data**: Convex for schemas, mutations, actions, and seed scripts.
+  - **Observability**: Sentry; **Hosting**: Netlify fronted by Cloudflare.
+- Maintain server-driven UX: prefer TanStack loaders/actions and Convex functions over client-only state.
+- Enforce tooling from Phase 0: pnpm, Husky hooks (lint/format/codegen/build), lint-staged, CodeRabbit PR reviews, Prettier/ESLint alignment.
+
+## Data, Integrations & State Management
+
+## Security, Compliance & Reliability
+
+- Store secrets in `.env.local` (local) and Netlify environment variables (deploy). Keep `.env.local.example` current.
+- **⚠️ Environment Variables & Convex Status**: AI agents do NOT have access to `.env.local` (it's gitignored). Before assuming environment variables or Convex need setup, check `docs/architecture/phase-0-checklist.md` sections 5 and 6. Phase 0 is complete: Convex is active, environment variables are configured, and CodeRabbit is connected. Do NOT suggest setup steps unless the checklist indicates otherwise.
+- Ensure Husky `pre-commit` and `pre-push` hooks stay fast (<5s) and pass before pushing.
+
+## Testing, Quality & Documentation
+
+- Run `pnpm lint`, `pnpm format:check`, and relevant phase-specific scripts (`pnpm convex codegen`, `pnpm typecheck`, Lighthouse, axe) before delivering work.
+- Add or update architecture decision logs (`phase-*-decisions.md`), runbooks, and checklists as tasks complete.
+- For new features, include smoke-test notes or manual QA steps aligned with the definition of done.
+- Keep documentation, configs, and generated assets in the `docs/` structure; avoid scattering context across other directories.
+
+## Collaboration & Communication
+
+- Work transparently: summarize plan, cite source docs, and mention affected files in updates.
+- Flag blockers immediately (missing keys, ambiguous specs, upstream bugs). Do not hack around requirements just to ship.
+- Keep PRs and Cursor diffs scoped to one atomic task, matching the phase checklists.
+- Ensure every deliverable can be demoed or verified quickly—provide test accounts, seeded data commands, and navigation instructions.

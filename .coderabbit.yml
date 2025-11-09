@@ -1,0 +1,26 @@
+language: "en-US"
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  path_instructions:
+    - path: "**/*.ts"
+      instructions: "Ensure TypeScript strict mode compliance and proper type safety"
+    - path: "**/*.tsx"
+      instructions: "Verify accessibility, responsive design, and i18n translation key usage"
+    - path: "convex/**"
+      instructions: "Check schema validation, index usage, and auth guards"
+    - path: "docs/**"
+      instructions: "Ensure documentation is up-to-date with implementation changes"
+  tools:
+    eslint:
+      enabled: true
+    prettier:
+      enabled: true
+chat:
+  auto_reply: true

@@ -1,0 +1,21 @@
+[build]
+  command = "npx convex deploy --cmd 'pnpm build'"
+  publish = "dist/client"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Only CONVEX_DEPLOY_KEY should remain secret
+  SECRETS_SCAN_OMIT_KEYS = "CONVEX_DEPLOYMENT"
+
+# Preview deploy configuration (uses Preview Deploy Key)
+[context.deploy-preview]
+  command = "npx convex deploy --cmd 'pnpm build'"
+
+# Production deploy configuration
+[context.production]
+  command = "npx convex deploy --cmd 'pnpm build'"
+  
+# Development branch configuration
+[context.branch-deploy]
+  command = "npx convex deploy --cmd 'pnpm build'"
+

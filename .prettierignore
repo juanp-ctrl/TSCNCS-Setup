@@ -1,0 +1,17 @@
+# Auto-generated files - DO NOT format
+src/routeTree.gen.ts
+convex/_generated/
+
+# Build outputs
+dist/
+.netlify/
+.convex/
+
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+
+# Environment files
+.env.local
+

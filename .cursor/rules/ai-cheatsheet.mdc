@@ -1,0 +1,33 @@
+---
+alwaysApply: true
+---
+
+AI Rule: Keep docs/AI_Cheatsheet.md up-to-date
+
+Purpose
+
+- Ensure every change to the codebase or docs is reflected in `docs/AI_Cheatsheet.md` so AI agents and humans have a single source of truth for implementation status.
+
+When to Update
+
+- After completing any implementation task, refactor, or documentation change that affects features, phases, or decisions.
+- At the end of a PR and before merging to `main`.
+
+How to Update
+
+1. Edit `docs/AI_Cheatsheet.md`:
+   - Mark relevant items in Section 2 (Implementation Status) as “In Progress” or “Done”.
+   - Update Phase status in Section 3, if applicable.
+   - Adjust Section 4 “Open Decisions” if you resolved or added decisions.
+   - Add PR/commit link(s) next to updated bullets.
+2. If scope changed, update the matching phase doc under `docs/architecture/`.
+
+Cursor Agent Guidance
+
+- Before starting a task: read `docs/AI_Cheatsheet.md`, `docs/Project_Definition.md`, the relevant phase doc, and `docs/Design.md`.
+- After finishing a task: update `docs/AI_Cheatsheet.md` immediately in the same turn.
+- If you create new features or remove planned ones, reflect that in both the Cheatsheet and the appropriate phase file.
+
+Definition of Done Extension
+
+- A task is not “Done” until `docs/AI_Cheatsheet.md` accurately reflects the change.
